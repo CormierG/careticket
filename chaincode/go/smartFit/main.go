@@ -20,7 +20,7 @@ import (
 	"fmt"
 	"strconv"
 	"strings"
-    "time"
+	"time"
 	"github.com/hyperledger/fabric/core/chaincode/shim"
 )
 
