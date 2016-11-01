@@ -1,2 +1,2 @@
 # careticket
-Blockchain smartcontracts samples for CareTicket
+Blockchain smartcontract samples for CareTicket
