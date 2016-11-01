@@ -49,5 +49,7 @@ type SmartFitState struct {
     ActiveMinutes    string      `json:"activeminutes,omitempty"`       
     CaloriesOut      string      `json:"caloriesout,omitempty"`    
     Steps            string      `json:"steps,omitempty"`
+    FullName         string      `json:"fullname,omitempty"`
+    Age              string      `json:"age,omitempty"`
     Timestamp        string      `json:"timestamp,omitempty"`        
 }
