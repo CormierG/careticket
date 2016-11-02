@@ -25,8 +25,8 @@ import (
 )
 
 
-// SimpleChaincode example simple Chaincode implementation
-type SimpleChaincode struct {
+// SmartFitChaincode example Chaincode implementation
+type SmartFitChaincode struct {
 
 }
 
