@@ -1,30 +1,38 @@
-
-/*
+/*******************************************************************************
+Copyright (c) 2016 IBM Corporation and other Contributors.
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+    http://www.apache.org/licenses/LICENSE-2.0
+Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and limitations under the License.
 Contributors:
+Sumabala Nair - Initial Contribution
+Kim Letkeman - Initial Contribution
+Sumabala Nair - Updated for hyperledger May 2016
+Sumabala Nair - Partial updates added May 2016
+******************************************************************************/
+//SN: March 2016
 
-Mike Aro - Initial Contribution
-Jay Venenga - Initial Contribution
-Bryan Kribbs - Initial Contribution
+// IoT Blockchain Simple Smart Contract v 1.0
 
-
-November 2016
-*/
+// This is a simple contract that creates a CRUD interface to 
+// create, read, update and delete an asset
 
 package main
 
 import (
-	"encoding/json"
-	"errors"
-	"fmt"
-	"strings"
-	"reflect"
-	"time"
-	"github.com/hyperledger/fabric/core/chaincode/shim"
+    "encoding/json"
+    "errors"
+    "fmt"
+    "strings"
+     "reflect"
+    "github.com/hyperledger/fabric/core/chaincode/shim"
 )
 
-// SmartAirQualityChaincode example Chaincode implementation
-type SmartAirQualityChaincode struct {
 
+// SimpleChaincode example simple Chaincode implementation
+type SimpleChaincode struct {
 }
 
 const CONTRACTSTATEKEY string = "ContractStateKey"  
@@ -32,22 +40,23 @@ const CONTRACTSTATEKEY string = "ContractStateKey"
 const MYVERSION string = "1.0"
 
 // ************************************
-// contract state 
+// asset and contract state 
 // ************************************
-
 
 type ContractState struct {
     Version      string                        `json:"version"`
 }
 
-type SmartAirQualityState struct {
-    AssetID          string      `json:"assetid,omitempty"`        // all assets must have an ID, primary key of contract
-    RoomType         string      `json:"roomtype,omitempty"`    
-    LocationName     string      `json:"locationname,omitempty"`       
-    Latitude         string      `json:"latitude,omitempty"`            
-    Longitude        string      `json:"longitude,omitempty"`           
-    OwnerType        string      `json:"ownertype,omitempty"`
-    Timestamp        string      `json:"timestamp,omitempty"`        
+type Geolocation struct {
+    Latitude    *float64 `json:"latitude,omitempty"`
+    Longitude   *float64 `json:"longitude,omitempty"`
+}
+
+type AssetState struct {
+    AssetID        *string       `json:"assetID,omitempty"`        // all assets must have an ID, primary key of contract
+    Location       *Geolocation  `json:"location,omitempty"`       // current asset location
+    Temperature    *float64      `json:"temperature,omitempty"`    // asset temp
+    Carrier        *string       `json:"carrier,omitempty"`        // the name of the carrier
 }
 
 var contractState = ContractState{MYVERSION}
@@ -80,7 +89,6 @@ func (t *SimpleChaincode) Init(stub *shim.ChaincodeStub, function string, args [
     return nil, nil
 }
 
-
 // ************************************
 // deploy and invoke callback mode 
 // ************************************
@@ -98,7 +106,6 @@ func (t *SimpleChaincode) Invoke(stub *shim.ChaincodeStub, function string, args
     }
     return nil, errors.New("Received unknown invocation: " + function)
 }
-
 
 // ************************************
 // query callback mode 
@@ -147,12 +154,13 @@ func (t *SimpleChaincode) updateAsset(stub *shim.ChaincodeStub, args []string) (
     return nil, erval
 }
 
+
 //******************** deleteAsset ********************/
 
 func (t *SimpleChaincode) deleteAsset(stub *shim.ChaincodeStub, args []string) ([]byte, error) {
     var assetID string // asset ID
     var err error
-    var stateIn SmartAirQualityState
+    var stateIn AssetState
 
     // validate input data for number of args, Unmarshaling to asset state and obtain asset id
     stateIn, err = t.validateInput(args)
@@ -176,7 +184,7 @@ func (t *SimpleChaincode) deleteAsset(stub *shim.ChaincodeStub, args []string) (
 func (t *SimpleChaincode) readAsset(stub *shim.ChaincodeStub, args []string) ([]byte, error) {
     var assetID string // asset ID
     var err error
-    var state SmartAirQualityState
+    var state AssetState
 
      // validate input data for number of args, Unmarshaling to asset state and obtain asset id
     stateIn, err:= t.validateInput(args)
@@ -201,7 +209,7 @@ func (t *SimpleChaincode) readAsset(stub *shim.ChaincodeStub, args []string) ([]
 //*************readAssetObjectModel*****************/
 
 func (t *SimpleChaincode) readAssetObjectModel(stub *shim.ChaincodeStub, args []string) ([]byte, error) {
-    var state SmartAirQualityState = SmartAirQualityState{}
+    var state AssetState = AssetState{}
 
     // Marshal and return
     stateJSON, err := json.Marshal(state)
@@ -224,9 +232,9 @@ func (t *SimpleChaincode) readAssetSchemas(stub *shim.ChaincodeStub, args []stri
 // ************************************
 // validate input data : common method called by the CRUD functions
 // ************************************
-func (t *SimpleChaincode) validateInput(args []string) (stateIn SmartAirQualityState, err error) {
+func (t *SimpleChaincode) validateInput(args []string) (stateIn AssetState, err error) {
     var assetID string // asset ID
-    var state SmartAirQualityState = SmartAirQualityState{} // The calling function is expecting an object of type SmartAirQualityState
+    var state AssetState = AssetState{} // The calling function is expecting an object of type AssetState
 
     if len(args) !=1 {
         err = errors.New("Incorrect number of arguments. Expecting a JSON strings with mandatory assetID")
@@ -265,8 +273,8 @@ func (t *SimpleChaincode) validateInput(args []string) (stateIn SmartAirQualityS
 func (t *SimpleChaincode) createOrUpdateAsset(stub *shim.ChaincodeStub, args []string) ([]byte, error) {
     var assetID string                 // asset ID                    // used when looking in map
     var err error
-    var stateIn SmartAirQualityState
-    var stateStub SmartAirQualityState
+    var stateIn AssetState
+    var stateStub AssetState
    
 
     // validate input data for number of args, Unmarshaling to asset state and obtain asset id
@@ -312,9 +320,8 @@ func (t *SimpleChaincode) createOrUpdateAsset(stub *shim.ChaincodeStub, args []s
     } 
     return nil, nil
 }
-
 /*********************************  internal: mergePartialState ****************************/	
- func (t *SimpleChaincode) mergePartialState(oldState SmartAirQualityState, newState SmartAirQualityState) (SmartAirQualityState,  error) {
+ func (t *SimpleChaincode) mergePartialState(oldState AssetState, newState AssetState) (AssetState,  error) {
      
     old := reflect.ValueOf(&oldState).Elem()
     new := reflect.ValueOf(&newState).Elem()
