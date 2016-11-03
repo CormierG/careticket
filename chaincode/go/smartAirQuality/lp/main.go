@@ -1,18 +1,12 @@
 /*******************************************************************************
-Copyright (c) 2016 IBM Corporation and other Contributors.
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-    http://www.apache.org/licenses/LICENSE-2.0
-Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and limitations under the License.
+
 Contributors:
-Sumabala Nair - Initial Contribution
-Kim Letkeman - Initial Contribution
-Sumabala Nair - Updated for hyperledger May 2016
-Sumabala Nair - Partial updates added May 2016
+
+Mike Aro  - Initial Contribution
+
+November 2016
 ******************************************************************************/
-//SN: March 2016
+
 
 // IoT Blockchain Simple Smart Contract v 1.0
 
