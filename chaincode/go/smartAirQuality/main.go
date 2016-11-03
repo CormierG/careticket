@@ -46,10 +46,19 @@ type Geolocation struct {
 }
 
 type AssetState struct {
-    AssetID        *string       `json:"assetID,omitempty"`        // all assets must have an ID, primary key of contract
+/*    AssetID        *string       `json:"assetID,omitempty"`        // all assets must have an ID, primary key of contract
     Location       *Geolocation  `json:"location,omitempty"`       // current asset location
     Temperature    *float64      `json:"temperature,omitempty"`    // asset temp
     Carrier        *string       `json:"carrier,omitempty"`        // the name of the carrier
+} */
+
+    AssetID          string      `json:"assetid,omitempty"`        // all assets must have an ID, primary key of contract
+    RoomType         string      `json:"roomtype,omitempty"`    
+    LocationName     string      `json:"locationname,omitempty"`       
+    Latitude         string      `json:"latitude,omitempty"`            
+    Longitude        string      `json:"longitude,omitempty"`           
+    OwnerType        string      `json:"ownertype,omitempty"`
+    Timestamp        string      `json:"timestamp,omitempty"`        
 }
 
 var contractState = ContractState{MYVERSION}
