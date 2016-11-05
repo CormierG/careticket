@@ -2,58 +2,57 @@ package main
 
 var schemas = `
 {
-	"API": {
+    "API": {
         "createAsset": {
-               "description": "Create an asset. One argument, a JSON encoded event. AssetID is required with zero or more writable properties. Establishes an initial asset state.",
-               "properties": {
-                   "args": {
-                       "description": "args are JSON encoded strings",
-                       "items": {
-                           "description": "A set of fields that constitute the writable fields in an asset's state. AssetID is mandatory along with at least one writable field. In this contract pattern, a partial state is used as an event.",
+            "description": "Create an asset. One argument, a JSON encoded event. AssetID is required with zero or more writable properties. Establishes an initial asset state.",
+            "properties": {
+                "args": {
+                    "description": "args are JSON encoded strings",
+                    "items": {
+                        "description": "A set of fields that constitute the writable fields in an asset's state. AssetID is mandatory along with at least one writable field. In this contract pattern, a partial state is used as an event.",
                            "properties": {
                                "assetID": {
-                               		"description": "The ID of a managed asset. The resource focal point for a smart contract.",
-                               		"type": "string"
+                                    "description": "The ID of a managed asset. The resource focal point for a smart contract.",
+                                    "type": "string"
                                },
                                "roomtype": {
 
                                },
                                "locationname": {
-                               		"type": "string"
+                                    "type": "string"
                                },
                                "latitude": {
-                               		"description": "A geographical coordinate",
-                               		"type": "number"
+                                    "description": "A geographical coordinate",
+                                    "type": "number"
                                },
                                "longitude": {
-                               		"description": "A geographical coordinate",
-                               		"type": "number"
+                                    "description": "A geographical coordinate",
+                                    "type": "number"
                                },
                                "ownertype": {
-                               		"type": "string"
+                                    "type": "string"
                                }
-				 								
-                           },
-                           "required": [
-                   				"assetID"
-               			   ],
-               			   "type": "object"
-                       }, //args
-                       "maxItems": 1,
-                       "minItems": 1,
-                       "type": "array"
-                   },
-                   "function": {
-                       "description": "createAsset function",
-                       "enum": [
-                           "createAsset"
-                       ],
-                       "type": "string"
-                   },
-                   "method": "invoke"
-               },
-
-        }, //createAsset
+                        },
+                        "required": [
+                            "assetID"
+                        ],
+                        "type": "object"
+                    },
+                    "maxItems": 1,
+                    "minItems": 1,
+                    "type": "array"
+                },
+                "function": {
+                    "description": "createAsset function",
+                    "enum": [
+                        "createAsset"
+                    ],
+                    "type": "string"
+                },
+                "method": "invoke"
+            },
+            "type": "object"
+        },
         "deleteAsset": {
             "description": "Delete an asset. Argument is a JSON encoded string containing only an assetID.",
             "properties": {
@@ -182,7 +181,7 @@ var schemas = `
             },
             "type": "object"
         },
-       "readAssetSamples": {
+        "readAssetSamples": {
             "description": "Returns a string generated from the schema containing sample Objects as specified in generate.json in the scripts folder.",
             "properties": {
                 "args": {
@@ -233,57 +232,57 @@ var schemas = `
             "type": "object"
         },
         "updateAsset": {
-               "description": "Update the state of an asset. The one argument is a JSON encoded event. AssetID is required along with one or more writable properties. Establishes the next asset state. ",
-               "properties": {
-                   "args": {
-                       "description": "args are JSON encoded strings",
-                       "items": {
-                           "description": "A set of fields that constitute the writable fields in an asset's state. AssetID is mandatory along with at least one writable field. In this contract pattern, a partial state is used as an event.",
+            "description": "Update the state of an asset. The one argument is a JSON encoded event. AssetID is required along with one or more writable properties. Establishes the next asset state. ",
+            "properties": {
+                "args": {
+                    "description": "args are JSON encoded strings",
+                    "items": {
+                        "description": "A set of fields that constitute the writable fields in an asset's state. AssetID is mandatory along with at least one writable field. In this contract pattern, a partial state is used as an event.",
                            "properties": {
                                "assetID": {
-                               		"description": "The ID of a managed asset. The resource focal point for a smart contract.",
-                               		"type": "string"
+                                    "description": "The ID of a managed asset. The resource focal point for a smart contract.",
+                                    "type": "string"
                                },
                                "roomtype": {
 
                                },
                                "locationname": {
-                               		"type": "string"
+                                    "type": "string"
                                },
                                "latitude": {
-                               		"description": "A geographical coordinate",
-                               		"type": "number"
+                                    "description": "A geographical coordinate",
+                                    "type": "number"
                                },
                                "longitude": {
-                               		"description": "A geographical coordinate",
-                               		"type": "number"
+                                    "description": "A geographical coordinate",
+                                    "type": "number"
                                },
                                "ownertype": {
-                               		"type": "string"
+                                    "type": "string"
                                }
-				 								
-                           },
-                           "required": [
-                   				"assetID"
-               			   ],
-               			   "type": "object"
-                       }, //args
-                       "maxItems": 1,
-                       "minItems": 1,
-                       "type": "array"
-                   },
-                   "function": {
-                       "description": "updateAsset function",
-                       "enum": [
-                           "updateAsset"
-                       ],
-                       "type": "string"
-                   },
-                   "method": "invoke"
-               },
-               "type": "object"
-        }, //updateAsset
-        "objectModelSchemas": {
+                        },
+                        "required": [
+                            "assetID"
+                        ],
+                        "type": "object"
+                    },
+                    "maxItems": 1,
+                    "minItems": 1,
+                    "type": "array"
+                },
+                "function": {
+                    "description": "updateAsset function",
+                    "enum": [
+                        "updateAsset"
+                    ],
+                    "type": "string"
+                },
+                "method": "invoke"
+            },
+            "type": "object"
+        }
+    },
+    "objectModelSchemas": {
         "assetIDKey": {
             "description": "An object containing only an assetID for use as an argument to read or delete.",
             "properties": {
@@ -296,41 +295,35 @@ var schemas = `
         },
         "event": {
             "description": "A set of fields that constitute the writable fields in an asset's state. AssetID is mandatory along with at least one writable field. In this contract pattern, a partial state is used as an event.",
-              "properties": {
-                   "args": {
-                       "description": "args are JSON encoded strings",
-                       "items": {
-                           "description": "A set of fields that constitute the writable fields in an asset's state. AssetID is mandatory along with at least one writable field. In this contract pattern, a partial state is used as an event.",
                            "properties": {
                                "assetID": {
-                               		"description": "The ID of a managed asset. The resource focal point for a smart contract.",
-                               		"type": "string"
+                                    "description": "The ID of a managed asset. The resource focal point for a smart contract.",
+                                    "type": "string"
                                },
                                "roomtype": {
 
                                },
                                "locationname": {
-                               		"type": "string"
+                                    "type": "string"
                                },
                                "latitude": {
-                               		"description": "A geographical coordinate",
-                               		"type": "number"
+                                    "description": "A geographical coordinate",
+                                    "type": "number"
                                },
                                "longitude": {
-                               		"description": "A geographical coordinate",
-                               		"type": "number"
+                                    "description": "A geographical coordinate",
+                                    "type": "number"
                                },
                                "ownertype": {
-                               		"type": "string"
+                                    "type": "string"
                                }
-				 								
-                           },
+            },
             "required": [
                 "assetID"
             ],
             "type": "object"
         },
-         "initEvent": {
+        "initEvent": {
             "description": "event sent to init on deployment",
             "properties": {
                 "nickname": {
@@ -352,36 +345,28 @@ var schemas = `
             "description": "A set of fields that constitute the complete asset state.",
                            "properties": {
                                "assetID": {
-                               		"description": "The ID of a managed asset. The resource focal point for a smart contract.",
-                               		"type": "string"
+                                    "description": "The ID of a managed asset. The resource focal point for a smart contract.",
+                                    "type": "string"
                                },
                                "roomtype": {
 
                                },
                                "locationname": {
-                               		"type": "string"
+                                    "type": "string"
                                },
                                "latitude": {
-                               		"description": "A geographical coordinate",
-                               		"type": "number"
+                                    "description": "A geographical coordinate",
+                                    "type": "number"
                                },
                                "longitude": {
-                               		"description": "A geographical coordinate",
-                               		"type": "number"
+                                    "description": "A geographical coordinate",
+                                    "type": "number"
                                },
                                "ownertype": {
-                               		"type": "string"
+                                    "type": "string"
                                }
             },
             "type": "object"
         }
-        
-
-	} //API
-
+    }
 }`
-
-
-
-
-
