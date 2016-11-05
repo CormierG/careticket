@@ -52,7 +52,7 @@ type AssetState struct {
     Carrier        *string       `json:"carrier,omitempty"`        // the name of the carrier
 } */
 
-    AssetID          *string      `json:"assetid,omitempty"`        // all assets must have an ID, primary key of contract
+    AssetID          *string      `json:"assetID,omitempty"`        // all assets must have an ID, primary key of contract
     RoomType         string      `json:"roomtype,omitempty"`    
     LocationName     string      `json:"locationname,omitempty"`       
     Latitude         string      `json:"latitude,omitempty"`            
