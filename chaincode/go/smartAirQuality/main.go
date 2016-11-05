@@ -30,7 +30,7 @@ type SimpleChaincode struct {
 
 const CONTRACTSTATEKEY string = "ContractStateKey"  
 // store contract state - only version in this example
-const MYVERSION string = "1.0"
+const MYVERSION string = "1.1"
 
 // ************************************
 // asset and contract state 
@@ -42,7 +42,7 @@ type ContractState struct {
 
 type AssetState struct {
 
-    AssetID          *string      `json:"assetID,omitempty"`        // all assets must have an ID, primary key of contract
+    AssetID          *string     `json:"assetID,omitempty"`        // all assets must have an ID, primary key of contract
     RoomType         string      `json:"roomtype,omitempty"` 
     DeviceName       string       `json:"devicename,omitempty"`
     LocationName     string      `json:"locationname,omitempty"`       
