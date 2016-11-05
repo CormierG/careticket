@@ -79,6 +79,31 @@ var schemas = `
             },
             "type": "object"
         },
+        "readAssetSchemas": {
+            "description": "Returns a string generated from the schema containing APIs and Objects as specified in generate.json in the scripts folder.",
+            "properties": {
+                "args": {
+                    "description": "accepts no arguments",
+                    "items": {},
+                    "maxItems": 0,
+                    "minItems": 0,
+                    "type": "array"
+                },
+                "function": {
+                    "description": "readAssetSchemas function",
+                    "enum": [
+                        "readAssetSchemas"
+                    ],
+                    "type": "string"
+                },
+                "method": "query",
+                "result": {
+                    "description": "JSON encoded object containing selected schemas",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "updateAsset": {
                "description": "Update the state of an asset. The one argument is a JSON encoded event. AssetID is required along with one or more writable properties. Establishes the next asset state. ",
                "properties": {
