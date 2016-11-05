@@ -10,13 +10,16 @@ var schemas = `
                     "description": "args are JSON encoded strings",
                     "items": {
                         "description": "A set of fields that constitute the writable fields in an asset's state. AssetID is mandatory along with at least one writable field. In this contract pattern, a partial state is used as an event.",
-                           "properties": {
+                             "properties": {
                                "assetID": {
                                     "description": "The ID of a managed asset. The resource focal point for a smart contract.",
                                     "type": "string"
                                },
+                               "devicename:: {
+                                   "type": "string"
+                               }
                                "roomtype": {
-
+                                    "type": "string"
                                },
                                "locationname": {
                                     "type": "string"
@@ -150,31 +153,31 @@ var schemas = `
                 "method": "query",
                 "result": {
                     "description": "A set of fields that constitute the complete asset state.",
-                    "properties": {
-                        "assetID": {
-                            "description": "The ID of a managed asset. The resource focal point for a smart contract.",
-                            "type": "string"
-                        },
-                        "carrier": {
-                            "description": "transport entity currently in possession of asset",
-                            "type": "string"
-                        },
-                        "location": {
-                            "description": "A geographical coordinate",
-                            "properties": {
-                                "latitude": {
+                           "properties": {
+                               "assetID": {
+                                    "description": "The ID of a managed asset. The resource focal point for a smart contract.",
+                                    "type": "string"
+                               },
+                               "devicename:: {
+                                   "type": "string"
+                               }
+                               "roomtype": {
+                                    "type": "string"
+                               },
+                               "locationname": {
+                                    "type": "string"
+                               },
+                               "latitude": {
+                                    "description": "A geographical coordinate",
                                     "type": "number"
-                                },
-                                "longitude": {
+                               },
+                               "longitude": {
+                                    "description": "A geographical coordinate",
                                     "type": "number"
-                                }
-                            },
-                            "type": "object"
-                        },
-                        "temperature": {
-                            "description": "Temperature of the asset in CELSIUS.",
-                            "type": "number"
-                        }
+                               },
+                               "ownertype": {
+                                    "type": "string"
+                               }
                     },
                     "type": "object"
                 }
@@ -243,8 +246,11 @@ var schemas = `
                                     "description": "The ID of a managed asset. The resource focal point for a smart contract.",
                                     "type": "string"
                                },
+                               "devicename:: {
+                                   "type": "string"
+                               }
                                "roomtype": {
-
+                                    "type": "string"
                                },
                                "locationname": {
                                     "type": "string"
@@ -300,8 +306,11 @@ var schemas = `
                                     "description": "The ID of a managed asset. The resource focal point for a smart contract.",
                                     "type": "string"
                                },
+                               "devicename:: {
+                                   "type": "string"
+                               }
                                "roomtype": {
-
+                                    "type": "string"
                                },
                                "locationname": {
                                     "type": "string"
@@ -348,8 +357,11 @@ var schemas = `
                                     "description": "The ID of a managed asset. The resource focal point for a smart contract.",
                                     "type": "string"
                                },
+                               "devicename:: {
+                                   "type": "string"
+                               }
                                "roomtype": {
-
+                                    "type": "string"
                                },
                                "locationname": {
                                     "type": "string"
