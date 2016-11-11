@@ -46,7 +46,7 @@ type SimpleChaincode struct {
 const CONTRACTSTATEKEY string = "ContractStateKey"
 
 // MYVERSION must use this to deploy contract
-const MYVERSION string = "1.0"
+const MYVERSION string = "1.1"
 
 // ************************************
 // asset and contract state
