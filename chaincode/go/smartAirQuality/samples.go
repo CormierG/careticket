@@ -1,5 +1,6 @@
 package main
 
+
 var samples = `
 {
     "event": {
