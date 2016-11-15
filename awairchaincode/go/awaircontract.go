@@ -16,7 +16,6 @@ import (
 )
 
 // AwairChaincode implementation
-
 type AwairChaincode struct {
 
 }
