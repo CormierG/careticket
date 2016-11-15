@@ -54,7 +54,7 @@ var contractState = ContractState{MYVERSION}
 // ************************************
 
 // Init is called during deploy
-func (t *SimpleChaincode) Init(stub shim.ChaincodeStubInterface, function string, args []string) ([]byte, error) {
+func (t *AwairChaincode) Init(stub shim.ChaincodeStubInterface, function string, args []string) ([]byte, error) {
 	var stateArg ContractState
 	var err error
 	if len(args) != 1 {
@@ -83,7 +83,7 @@ func (t *SimpleChaincode) Init(stub shim.ChaincodeStubInterface, function string
 // ************************************
 
 // Invoke is called when an invoke message is received
-func (t *SimpleChaincode) Invoke(stub shim.ChaincodeStubInterface, function string, args []string) ([]byte, error) {
+func (t *AwairChaincode) Invoke(stub shim.ChaincodeStubInterface, function string, args []string) ([]byte, error) {
 	// Handle different functions
 	if function == "createAsset" {
 		// create assetID
@@ -104,7 +104,7 @@ func (t *SimpleChaincode) Invoke(stub shim.ChaincodeStubInterface, function stri
 // ************************************
 
 // Query is called when a query message is received
-func (t *SimpleChaincode) Query(stub shim.ChaincodeStubInterface, function string, args []string) ([]byte, error) {
+func (t *AwairChaincode) Query(stub shim.ChaincodeStubInterface, function string, args []string) ([]byte, error) {
 	// Handle different functions
 	if function == "readAsset" {
 		// gets the state for an assetID as a JSON struct
@@ -123,7 +123,7 @@ func (t *SimpleChaincode) Query(stub shim.ChaincodeStubInterface, function strin
 
 /**********main implementation *************/
 func main() {
-	err := shim.Start(new(SimpleChaincode))
+	err := shim.Start(new(AwairChaincode))
 	if err != nil {
 		fmt.Printf("Error starting Simple Chaincode: %s", err)
 	}
@@ -136,21 +136,21 @@ func main() {
 
 /******************** createAsset ********************/
 
-func (t *SimpleChaincode) createAsset(stub shim.ChaincodeStubInterface, args []string) ([]byte, error) {
+func (t *AwairChaincode) createAsset(stub shim.ChaincodeStubInterface, args []string) ([]byte, error) {
 	_, erval := t.createOrUpdateAsset(stub, args)
 	return nil, erval
 }
 
 //******************** updateAsset ********************/
 
-func (t *SimpleChaincode) updateAsset(stub shim.ChaincodeStubInterface, args []string) ([]byte, error) {
+func (t *AwairChaincode) updateAsset(stub shim.ChaincodeStubInterface, args []string) ([]byte, error) {
     _, erval := t.createOrUpdateAsset(stub, args)
     return nil, erval
 }
 
 //******************** deleteAsset ********************/
 
-func (t *SimpleChaincode) deleteAsset(stub shim.ChaincodeStubInterface, args []string) ([]byte, error) {
+func (t *AwairChaincode) deleteAsset(stub shim.ChaincodeStubInterface, args []string) ([]byte, error) {
     var assetID string // asset ID
     var err error
     var stateIn AssetState
@@ -174,7 +174,7 @@ func (t *SimpleChaincode) deleteAsset(stub shim.ChaincodeStubInterface, args []s
 
 //********************readAsset********************/
 
-func (t *SimpleChaincode) readAsset(stub shim.ChaincodeStubInterface, args []string) ([]byte, error) {
+func (t *AwairChaincode) readAsset(stub shim.ChaincodeStubInterface, args []string) ([]byte, error) {
     var assetID string // asset ID
     var err error
     var state AssetState
@@ -201,7 +201,7 @@ func (t *SimpleChaincode) readAsset(stub shim.ChaincodeStubInterface, args []str
 
 //*************readAssetObjectModel*****************/
 
-func (t *SimpleChaincode) readAssetObjectModel(stub shim.ChaincodeStubInterface, args []string) ([]byte, error) {
+func (t *AwairChaincode) readAssetObjectModel(stub shim.ChaincodeStubInterface, args []string) ([]byte, error) {
     var state AssetState = AssetState{}
 
     // Marshal and return
@@ -214,20 +214,20 @@ func (t *SimpleChaincode) readAssetObjectModel(stub shim.ChaincodeStubInterface,
 
 //*************readAssetSamples*******************/
 
-func (t *SimpleChaincode) readAssetSamples(stub shim.ChaincodeStubInterface, args []string) ([]byte, error) {
+func (t *AwairChaincode) readAssetSamples(stub shim.ChaincodeStubInterface, args []string) ([]byte, error) {
     return []byte(samples), nil
 }
 
 //*************readAssetSchemas*******************/
 
-func (t *SimpleChaincode) readAssetSchemas(stub shim.ChaincodeStubInterface, args []string) ([]byte, error) {
+func (t *AwairChaincode) readAssetSchemas(stub shim.ChaincodeStubInterface, args []string) ([]byte, error) {
     return []byte(schemas), nil
 }
 
 // ************************************
 // validate input data : common method called by the CRUD functions
 // ************************************
-func (t *SimpleChaincode) validateInput(args []string) (stateIn AssetState, err error) {
+func (t *AwairChaincode) validateInput(args []string) (stateIn AssetState, err error) {
     var assetID string                  // asset ID
     var state = AssetState{} // The calling function is expecting an object of type AssetState
 
@@ -265,7 +265,7 @@ func (t *SimpleChaincode) validateInput(args []string) (stateIn AssetState, err 
 
 //******************** createOrUpdateAsset ********************/
 
-func (t *SimpleChaincode) createOrUpdateAsset(stub shim.ChaincodeStubInterface, args []string) ([]byte, error) {
+func (t *AwairChaincode) createOrUpdateAsset(stub shim.ChaincodeStubInterface, args []string) ([]byte, error) {
     var assetID string // asset ID                    // used when looking in map
     var err error
     var stateIn AssetState
@@ -316,7 +316,7 @@ func (t *SimpleChaincode) createOrUpdateAsset(stub shim.ChaincodeStubInterface, 
 
 
 /*********************************  internal: mergePartialState ****************************/
-func (t *SimpleChaincode) mergePartialState(oldState AssetState, newState AssetState) (AssetState, error) {
+func (t *AwairChaincode) mergePartialState(oldState AssetState, newState AssetState) (AssetState, error) {
 
     old := reflect.ValueOf(&oldState).Elem()
     new := reflect.ValueOf(&newState).Elem()
