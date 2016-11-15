@@ -22,15 +22,15 @@ var schemas = `
                             },
                             "dust":{
                                 "description":"amount fo dust in the air in ug/m3",
-                                "dust":"number"
+                                "type":"number"
                             },
                             "temp":{
                                 "description":"Temperature of the air in FAHRENHEIT.",
-                                "dust":"number"
+                                "type":"number"
                             },
                             "humid":{
                                 "description":"Humidity of the air in %",
-                                "dust":"number"
+                                "type":"number"
                             },
                             "voc":{
                                 "description":"VOCs in the air.",
@@ -165,15 +165,15 @@ var schemas = `
                             },
                             "dust":{
                                 "description":"amount fo dust in the air in ug/m3",
-                                "dust":"number"
+                                "type":"number"
                             },
                             "temp":{
                                 "description":"Temperature of the air in FAHRENHEIT.",
-                                "dust":"number"
+                                "type":"number"
                             },
                             "humid":{
                                 "description":"Humidity of the air in %",
-                                "dust":"number"
+                                "type":"number"
                             },
                             "voc":{
                                 "description":"VOCs in the air.",
@@ -253,15 +253,15 @@ var schemas = `
                             },
                             "dust":{
                                 "description":"amount fo dust in the air in ug/m3",
-                                "dust":"number"
+                                "type":"number"
                             },
                             "temp":{
                                 "description":"Temperature of the air in FAHRENHEIT.",
-                                "dust":"number"
+                                "type":"number"
                             },
                             "humid":{
                                 "description":"Humidity of the air in %",
-                                "dust":"number"
+                                "type":"number"
                             },
                             "voc":{
                                 "description":"VOCs in the air.",
@@ -313,15 +313,15 @@ var schemas = `
                             },
                             "dust":{
                                 "description":"amount fo dust in the air in ug/m3",
-                                "dust":"number"
+                                "type":"number"
                             },
                             "temp":{
                                 "description":"Temperature of the air in FAHRENHEIT.",
-                                "dust":"number"
+                                "type":"number"
                             },
                             "humid":{
                                 "description":"Humidity of the air in %",
-                                "dust":"number"
+                                "type":"number"
                             },
                             "voc":{
                                 "description":"VOCs in the air.",
@@ -364,15 +364,15 @@ var schemas = `
                             },
                             "dust":{
                                 "description":"amount fo dust in the air in ug/m3",
-                                "dust":"number"
+                                "type":"number"
                             },
                             "temp":{
                                 "description":"Temperature of the air in FAHRENHEIT.",
-                                "dust":"number"
+                                "type":"number"
                             },
                             "humid":{
                                 "description":"Humidity of the air in %",
-                                "dust":"number"
+                                "type":"number"
                             },
                             "voc":{
                                 "description":"VOCs in the air.",
