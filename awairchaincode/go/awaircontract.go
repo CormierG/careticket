@@ -24,7 +24,7 @@ type AwairChaincode struct {
 const CONTRACTSTATEKEY string = "ContractStatekey"
 
 // MYVERSION must use this to deploy contract
-const MYVERSION string = "1.1"
+const MYVERSION string = "1.3"
 
 
 // ************************************
