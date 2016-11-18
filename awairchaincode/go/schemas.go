@@ -35,7 +35,7 @@ var schemas = `
                             "voc":{
                                 "description":"VOCs in the air.",
                                 "type":"number"
-                            }
+                            },
                             "location": {
                                 "description": "A geographical coordinate",
                                 "properties": {
@@ -198,7 +198,7 @@ var schemas = `
                             "voc":{
                                 "description":"VOCs in the air.",
                                 "type":"number"
-                            }
+                            },
                             "location": {
                                 "description": "A geographical coordinate",
                                 "properties": {
@@ -306,7 +306,7 @@ var schemas = `
                             "voc":{
                                 "description":"VOCs in the air.",
                                 "type":"number"
-                            }
+                            },
                             "location": {
                                 "description": "A geographical coordinate",
                                 "properties": {
@@ -386,7 +386,7 @@ var schemas = `
                             "voc":{
                                 "description":"VOCs in the air.",
                                 "type":"number"
-                            }
+                            },
                             "location": {
                                 "description": "A geographical coordinate",
                                 "properties": {
@@ -457,7 +457,7 @@ var schemas = `
                             "voc":{
                                 "description":"VOCs in the air.",
                                 "type":"number"
-                            }
+                            },
                             "location": {
                                 "description": "A geographical coordinate",
                                 "properties": {
