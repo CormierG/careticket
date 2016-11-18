@@ -36,6 +36,26 @@ var schemas = `
                                 "description":"VOCs in the air.",
                                 "type":"number"
                             }
+                            "location": {
+                                "description": "A geographical coordinate",
+                                "properties": {
+                                    "latitude": {
+                                        "type": "number"
+                                    },
+                                    "longitude": {
+                                        "type": "number"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "alert":{
+                                "description":"The staus of the alert.",
+                                "type":"string"
+                            },
+                            "alerttime":{
+                                "description":"The date in string format.",
+                                "type":"string"
+                            }
                         },
                         "required": [
                             "assetID"
@@ -179,6 +199,26 @@ var schemas = `
                                 "description":"VOCs in the air.",
                                 "type":"number"
                             }
+                            "location": {
+                                "description": "A geographical coordinate",
+                                "properties": {
+                                    "latitude": {
+                                        "type": "number"
+                                    },
+                                    "longitude": {
+                                        "type": "number"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "alert":{
+                                "description":"The staus of the alert.",
+                                "type":"string"
+                            },
+                            "alerttime":{
+                                "description":"The date in string format.",
+                                "type":"string"
+                            }
                     },
                     "type": "object"
                 }
@@ -267,6 +307,26 @@ var schemas = `
                                 "description":"VOCs in the air.",
                                 "type":"number"
                             }
+                            "location": {
+                                "description": "A geographical coordinate",
+                                "properties": {
+                                    "latitude": {
+                                        "type": "number"
+                                    },
+                                    "longitude": {
+                                        "type": "number"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "alert":{
+                                "description":"The staus of the alert.",
+                                "type":"string"
+                            },
+                            "alerttime":{
+                                "description":"The date in string format.",
+                                "type":"string"
+                            }
                         },
                         "required": [
                             "assetID"
@@ -327,6 +387,26 @@ var schemas = `
                                 "description":"VOCs in the air.",
                                 "type":"number"
                             }
+                            "location": {
+                                "description": "A geographical coordinate",
+                                "properties": {
+                                    "latitude": {
+                                        "type": "number"
+                                    },
+                                    "longitude": {
+                                        "type": "number"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "alert":{
+                                "description":"The staus of the alert.",
+                                "type":"string"
+                            },
+                            "alerttime":{
+                                "description":"The date in string format.",
+                                "type":"string"
+                            }
             },
             "required": [
                 "assetID"
@@ -377,6 +457,26 @@ var schemas = `
                             "voc":{
                                 "description":"VOCs in the air.",
                                 "type":"number"
+                            }
+                            "location": {
+                                "description": "A geographical coordinate",
+                                "properties": {
+                                    "latitude": {
+                                        "type": "number"
+                                    },
+                                    "longitude": {
+                                        "type": "number"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "alert":{
+                                "description":"The staus of the alert.",
+                                "type":"string"
+                            },
+                            "alerttime":{
+                                "description":"The date in string format.",
+                                "type":"string"
                             }
             },
             "type": "object"

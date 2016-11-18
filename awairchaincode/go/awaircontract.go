@@ -36,15 +36,25 @@ type ContractState struct {
 	Version string `json:"version"`
 }
 
+// Geolocation stores lat and long
+type Geolocation struct {
+    Latitude  *float64 `json:"latitude,omitempty"`
+    Longitude *float64 `json:"longitude,omitempty"`
+}
+
 // AssetState stores current state for any asset
 type AssetState struct {
-	AssetID		*string 	`json:assetID,omitempty"`
-	Co2        	*float64	`json:co2,omitempty"`
-	Dust    	*float64	`json:dust,omitempty"`
-	Temp 		*float64	`json:temp,omitempty"`
-	Humid  		*float64	`json:humid,omitempty"`
-	Voc 		*float64	`json:voc,omitempty"`
+	AssetID		*string 	    `json:assetID,omitempty"`
+	Co2        	*float64	    `json:co2,omitempty"`
+	Dust    	*float64	    `json:dust,omitempty"`
+	Temp 		*float64        `json:temp,omitempty"`
+	Humid  		*float64	    `json:humid,omitempty"`
+	Voc 		*float64	    `json:voc,omitempty"`
+    Location    *Geolocation    `json:"location,omitempty"`    // current asset location
+    Alert       *string         `json:alert,omitempty"`
+    AlertTime   *string         `json:alerttime,omitempty"`      
 }
+
 
 var contractState = ContractState{MYVERSION}
 
